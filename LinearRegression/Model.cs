@@ -14,11 +14,11 @@ namespace LinearRegression
 		public double Var { get; }
 		/* predicted */
 		private double a;
-		public double predictedA { get { return a; } }
+		public double inferedA { get { return a; } }
 		private double b;
-		public double predictedB { get { return a; } }
+		public double inferedB { get { return b; } }
 		private double var;
-		public double predictedVar { get { return a; } }
+		public double inferedVar { get { return var; } }
 
 		public double[] sample { get; }
 		public double[] realLine { get; }
@@ -40,7 +40,7 @@ namespace LinearRegression
 			{
 				double value = A * i + B;
 				realLine[i] = value;
-				sample[i] = value + Rand.Normal(0, Var);
+				sample[i] = value + Rand.Normal(0, Math.Sqrt(Var));
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace LinearRegression
 
 			string ans = "Precision: " + precisionString + Environment.NewLine;
 			ans += "A: " + aString + Environment.NewLine;
-			ans += "B: " + bString;
+			ans += "B: " + bString + Environment.NewLine;
 
 			this.var = (double)1 / parseBetween(precisionString, '=', ']');
 			this.a = parseBetween(aString, '(', ' ');

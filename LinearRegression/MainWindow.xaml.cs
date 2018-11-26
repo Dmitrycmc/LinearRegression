@@ -64,6 +64,19 @@ namespace LinearRegression
 			}
 		}
 
+		private string getAccuracyInfo(double real, double infered, string varName)
+		{
+			double absErr = infered - real;
+			double relErr = Math.Round(absErr * 100 / real, 2);
+			string info = "";
+			info += "Real " + varName + ": " + real + Environment.NewLine;
+			info += "Predicted: " + infered + Environment.NewLine;
+			info += "AbsErr: " + absErr + Environment.NewLine;
+			info += "RelErr: " + relErr + " %" + Environment.NewLine + Environment.NewLine;
+
+			return info;
+		}
+
 		private void infer_Click(object sender, RoutedEventArgs e)
 		{
 			try
@@ -84,11 +97,9 @@ namespace LinearRegression
 					plot.SeriesCollection[2].Values = new ChartValues<double>(model.inferedLine);
 				}
 
-				MessageBox.Show(res);
-				MessageBox.Show("A: " + model.A + " " + model.predictedA);
-				MessageBox.Show("B: " + model.B + " " + model.predictedB);
-				MessageBox.Show("Var: " + model.Var + " " + model.predictedVar);
-
+				textBlockrRes.Text = res + Environment.NewLine + getAccuracyInfo(model.A, model.inferedA, "A");
+				textBlockrRes.Text += getAccuracyInfo(model.B, model.inferedB, "B");
+				textBlockrRes.Text += getAccuracyInfo(model.Var, model.inferedVar, "Var");
 			}
 			catch (Exception exception)
 			{
