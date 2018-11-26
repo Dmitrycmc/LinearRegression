@@ -25,13 +25,13 @@ namespace LinearRegression
 		public double[] inferedLine { get; }
 
 		public Model(int N = 100, 
-			double downA = -2, double upA = 2, 
-			double downB = -20, double upB = 20, 
-			double downVar = 1, double upVar = 10
+			double lowerA = -2, double upperA = 2, 
+			double lowerB = -20, double upperB = 20, 
+			double lowerVar = 1, double upperVar = 10
 		) {
-			A = Rand.UniformBetween(downA, upA);
-			B = Rand.UniformBetween(downB, upB);
-			Var = Rand.UniformBetween(downVar, upVar);
+			A = Rand.UniformBetween(lowerA, upperA);
+			B = Rand.UniformBetween(lowerB, upperB);
+			Var = Rand.UniformBetween(lowerVar, upperVar);
 
 			sample = new double[N];
 			realLine = new double[N];

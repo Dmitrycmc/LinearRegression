@@ -24,7 +24,16 @@ namespace LinearRegression
 		{
 			try
 			{
-				model = new Model(10);
+				model = new Model(
+					N: int.Parse(textBoxN.Text),
+					lowerA: double.Parse(textBoxlowerA.Text),
+					upperA: double.Parse(textBoxUpperA.Text),
+					lowerB: double.Parse(textBoxlowerB.Text),
+					upperB: double.Parse(textBoxUpperB.Text),
+					lowerVar: double.Parse(textBoxlowerVar.Text),
+					upperVar: double.Parse(textBoxUpperVar.Text)
+				);
+
 				if (plot.SeriesCollection.Count == 3)
 				{
 					plot.SeriesCollection.RemoveAt(2);
