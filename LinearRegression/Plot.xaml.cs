@@ -16,15 +16,12 @@ namespace Wpf.CartesianChart.PointShapeLine
 			{
 				
 			};
-
-			//Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
-			YFormatter = value => value.ToString("C");
-
+			
+			YFormatter = value => string.Format("{0:0.00}", value);
 			DataContext = this;
 		}
 
 		public SeriesCollection SeriesCollection { get; set; }
-		public string[] Labels { get; set; }
 		public Func<double, string> YFormatter { get; set; }
 
 	}

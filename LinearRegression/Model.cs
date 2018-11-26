@@ -24,11 +24,14 @@ namespace LinearRegression
 		public double[] realLine { get; }
 		public double[] inferedLine { get; }
 
-		public Model(int N = 100)
-		{
-			A = Rand.UniformBetween(-2, 2);
-			B = Rand.UniformBetween(-20, 20);
-			Var = Rand.UniformBetween(1, 10);
+		public Model(int N = 100, 
+			double downA = -2, double upA = 2, 
+			double downB = -20, double upB = 20, 
+			double downVar = 1, double upVar = 10
+		) {
+			A = Rand.UniformBetween(downA, upA);
+			B = Rand.UniformBetween(downB, upB);
+			Var = Rand.UniformBetween(downVar, upVar);
 
 			sample = new double[N];
 			realLine = new double[N];
