@@ -12,17 +12,17 @@ namespace LinearRegression
 		public double A { get; }
 		public double B { get; }
 		public double Var { get; }
-		/* predicted */
+		/* inferred */
 		private double a;
-		public double inferedA { get { return a; } }
+		public double inferredA { get { return a; } }
 		private double b;
-		public double inferedB { get { return b; } }
+		public double inferredB { get { return b; } }
 		private double var;
-		public double inferedVar { get { return var; } }
+		public double inferredVar { get { return var; } }
 
 		public double[] sample { get; }
 		public double[] realLine { get; }
-		public double[] inferedLine { get; }
+		public double[] inferredLine { get; }
 
 		public Model(int N = 100, 
 			double lowerA = -2, double upperA = 2, 
@@ -35,7 +35,7 @@ namespace LinearRegression
 
 			sample = new double[N];
 			realLine = new double[N];
-			inferedLine = new double[N];
+			inferredLine = new double[N];
 			for (int i = 0; i < sample.Length; i++)
 			{
 				double value = A * i + B;
@@ -92,7 +92,7 @@ namespace LinearRegression
 			for (int i = 0; i < sample.Length; i++)
 			{
 				double value = this.a * i + this.b;
-				inferedLine[i] = value;
+				inferredLine[i] = value;
 			}
 
 			return ans;

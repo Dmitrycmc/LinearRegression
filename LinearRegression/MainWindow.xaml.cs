@@ -64,13 +64,13 @@ namespace LinearRegression
 			}
 		}
 
-		private string getAccuracyInfo(double real, double infered, string varName)
+		private string getAccuracyInfo(double real, double inferred, string varName)
 		{
-			double absErr = infered - real;
+			double absErr = inferred - real;
 			double relErr = Math.Round(absErr * 100 / real, 2);
 			string info = "";
 			info += "Real " + varName + ": " + real + Environment.NewLine;
-			info += "Predicted: " + infered + Environment.NewLine;
+			info += "Inferred: " + inferred + Environment.NewLine;
 			info += "AbsErr: " + absErr + Environment.NewLine;
 			info += "RelErr: " + relErr + " %" + Environment.NewLine + Environment.NewLine;
 
@@ -87,19 +87,19 @@ namespace LinearRegression
 				{
 					plot.SeriesCollection.Add(new LineSeries
 					{
-						Title = "Infered Line",
+						Title = "Inferred Line",
 						PointGeometrySize = 0,
-						Values = new ChartValues<double>(model.inferedLine),
+						Values = new ChartValues<double>(model.inferredLine),
 					});
 				}
 				else
 				{
-					plot.SeriesCollection[2].Values = new ChartValues<double>(model.inferedLine);
+					plot.SeriesCollection[2].Values = new ChartValues<double>(model.inferredLine);
 				}
 
-				textBlockrRes.Text = res + Environment.NewLine + getAccuracyInfo(model.A, model.inferedA, "A");
-				textBlockrRes.Text += getAccuracyInfo(model.B, model.inferedB, "B");
-				textBlockrRes.Text += getAccuracyInfo(model.Var, model.inferedVar, "Var");
+				textBlockrRes.Text = res + Environment.NewLine + getAccuracyInfo(model.A, model.inferredA, "A");
+				textBlockrRes.Text += getAccuracyInfo(model.B, model.inferredB, "B");
+				textBlockrRes.Text += getAccuracyInfo(model.Var, model.inferredVar, "Var");
 			}
 			catch (Exception exception)
 			{
