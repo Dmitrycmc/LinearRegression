@@ -60,7 +60,7 @@ namespace LinearRegression
 			return res;
 		}
 
-		public string infer()
+		public string infer(bool visualize)
 		{
 			Variable<double> a = Variable.GaussianFromMeanAndVariance(0, 100).Named("a");
 			Variable<double> b = Variable.GaussianFromMeanAndVariance(0, 100).Named("b");
@@ -77,6 +77,12 @@ namespace LinearRegression
 			
 			InferenceEngine engine = new InferenceEngine(new ExpectationPropagation());
 			
+			if (visualize)
+			{
+				InferenceEngine.Visualizer = new Microsoft.ML.Probabilistic.Compiler.Visualizers.WindowsVisualizer();
+				engine.ShowFactorGraph = true;
+			}
+
 			string precisionString = engine.Infer(precision).ToString();
 			string aString = engine.Infer(a).ToString();
 			string bString = engine.Infer(b).ToString();

@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using Microsoft.ML.Probabilistic.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -81,7 +82,8 @@ namespace LinearRegression
 		{
 			try
 			{
-				string res = model.infer();
+				
+				string res = model.infer((bool)checkBoxVisualize.IsChecked);
 
 				if (plot.SeriesCollection.Count < 3)
 				{
